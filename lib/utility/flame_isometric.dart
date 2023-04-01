@@ -12,6 +12,7 @@ class FlameIsometric extends FlameGame {
   late Vector2 srcTileSize;
   late int tileWidth;
   late int tileHeight;
+  late int layerLength = 0;
 
   FlameIsometric._();
 
@@ -26,6 +27,7 @@ class FlameIsometric extends FlameGame {
     final tmxData = await assets.readFile(this.tmx);
     final tmx = TileMapParser.parseTmx(tmxData);
     final layers = tmx.layers.whereType<TileLayer>();
+    layerLength = layers.length;
     matrixList = getMatrixList(layers);
 
     final tilesetImage = await images.load(tileMap);

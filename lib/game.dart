@@ -4,41 +4,25 @@ import 'package:flame/input.dart';
 
 import 'utility/flame_isometric.dart';
 
-class MainGame extends FlameGame with KeyboardEvents, HasGameRef {
+class MainGame extends FlameGame with HasGameRef {
   static const scale = 1.0;
   final topLeft = Vector2(600, 0);
 
   @override
   Future<void> onLoad() async {
     super.onLoad();
-
+    final gameSize = gameRef.size;
     final flameIsometric = await FlameIsometric.create(tileMap: 'tile_map.png', tmx: 'tiles/tile_map.tmx');
 
-    add(
-      IsometricTileMapComponent(
-        flameIsometric.tileset,
-        flameIsometric.matrixList[0],
-        destTileSize: flameIsometric.srcTileSize,
-        position: topLeft,
-      ),
-    );
-
-    add(
-      IsometricTileMapComponent(
-        flameIsometric.tileset,
-        flameIsometric.matrixList[1],
-        destTileSize: flameIsometric.srcTileSize,
-        position: topLeft,
-      ),
-    );
-
-    add(
-      IsometricTileMapComponent(
-        flameIsometric.tileset,
-        flameIsometric.matrixList[2],
-        destTileSize: flameIsometric.srcTileSize,
-        position: topLeft,
-      ),
-    );
+    for (var i = 0; i < flameIsometric.layerLength; i++) {
+      add(
+        IsometricTileMapComponent(
+          flameIsometric.tileset,
+          flameIsometric.matrixList[i],
+          destTileSize: flameIsometric.srcTileSize,
+          position: Vector2(gameSize.x / 2, flameIsometric.tileHeight.toDouble()),
+        ),
+      );
+    }
   }
 }
