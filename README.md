@@ -36,6 +36,7 @@ This time, we are using materials created by
 
 As for layers, they are placed in three separate layers: "bottom," "middle," and "top.
 
+<img width="400" src="https://user-images.githubusercontent.com/1584153/229285689-81633dbb-7eaf-4865-9134-3a9d6393f51b.png">
 
 Mainly, the floor is placed in the "bottom" layer. The "middle" layer is for walls, etc. The "top" layer is mainly used for roofs, and the map is created as shown below.
 
